@@ -1,30 +1,18 @@
 export const handleOrderRedirect = (platform: 'zomato' | 'swiggy') => {
-  const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
-
   // NOTE: Replace with actual restaurant IDs/URLs when available
   const links = {
-    zomato: {
-      app: 'zomato://restaurant/123456', // Placeholder deep link
-      web: 'https://www.zomato.com/kolkata/murgyani-the-khandaani-biryani-jadavpur' // Placeholder
-    },
-    swiggy: {
-      app: 'swiggy://menu/1083054', // Based on the provided link
-      web: 'https://www.swiggy.com/city/kolkata/murgyani-the-khaandani-biryani-santoshpur-rest1083054'
-    }
+    zomato: 'https://www.zomato.com/kolkata/murgyani-the-khandaani-biryani-jadavpur',
+    swiggy: 'https://www.swiggy.com/city/kolkata/murgyani-the-khaandani-biryani-santoshpur-rest1083054'
   };
 
-  const { app, web } = links[platform];
+  const targetUrl = links[platform];
 
-  if (isMobile) {
-    // Attempt to open the app
-    window.location.href = app;
-
-    // Fallback to web if app is not installed
-    setTimeout(() => {
-      window.location.href = web;
-    }, 1500);
-  } else {
-    // Desktop: go straight to web
-    window.open(web, '_blank');
-  }
+  // Using the standard HTTPS web links is the most reliable method.
+  // Both Zomato and Swiggy use "Universal Links" (iOS) and "App Links" (Android).
+  // If the user is on mobile and has the app installed, their phone's OS will 
+  // automatically intercept the web link and open the app natively.
+  // If they don't have the app (or are on desktop), it safely opens the web browser page,
+  // completely avoiding the "ERR_UNKNOWN_URL_SCHEME" browser error.
+  
+  window.open(targetUrl, '_blank');
 };

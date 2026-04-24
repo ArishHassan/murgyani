@@ -1,7 +1,6 @@
 'use client';
 
 import React, { useEffect } from 'react';
-import { handleOrderRedirect } from '@/utils/redirectLogic';
 import { X } from 'lucide-react';
 import { createPortal } from 'react-dom';
 
@@ -18,11 +17,6 @@ export const OrderModal: React.FC<OrderModalProps> = ({ isOpen, onClose }) => {
   }, []);
 
   if (!isOpen || !mounted) return null;
-
-  const handleOrder = (platform: 'zomato' | 'swiggy') => {
-    handleOrderRedirect(platform);
-    onClose();
-  };
 
   const modalContent = (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
@@ -47,20 +41,26 @@ export const OrderModal: React.FC<OrderModalProps> = ({ isOpen, onClose }) => {
         </div>
 
         <div className="flex flex-col gap-4">
-          <button
-            onClick={() => handleOrder('zomato')}
-            className="w-full bg-[#E23744] hover:bg-[#cb202d] text-white py-4 px-6 rounded-xl font-bold font-sans flex items-center justify-center gap-3 transition-colors"
+          <a 
+            href="https://link.zomato.com/xqzv/rshare?id=YOUR_ZOMATO_ID_HERE" // Zomato often prefers share links or specific deep links. Placeholder used.
+            target="_blank"
+            rel="noopener noreferrer"
+            onClick={onClose}
+            className="w-full bg-[#E23744] hover:bg-[#cb202d] text-white py-4 px-6 rounded-xl font-bold font-sans flex items-center justify-center gap-3 transition-colors text-center"
           >
             Order on Zomato
             <span className="text-xs bg-white/20 px-2 py-1 rounded-full"></span>
-          </button>
+          </a>
 
-          <button
-            onClick={() => handleOrder('swiggy')}
-            className="w-full bg-[#FC8019] hover:bg-[#e46d08] text-white py-4 px-6 rounded-xl font-bold font-sans flex items-center justify-center gap-3 transition-colors"
+          <a 
+            href="https://www.swiggy.com/city/kolkata/murgyani-the-khaandani-biryani-santoshpur-rest1083054"
+            target="_blank"
+            rel="noopener noreferrer"
+            onClick={onClose}
+            className="w-full bg-[#FC8019] hover:bg-[#e46d08] text-white py-4 px-6 rounded-xl font-bold font-sans flex items-center justify-center gap-3 transition-colors text-center"
           >
             Order on Swiggy
-          </button>
+          </a>
         </div>
       </div>
     </div>
