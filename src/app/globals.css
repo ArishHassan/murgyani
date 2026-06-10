@@ -49,6 +49,21 @@ body {
   }
 }
 
+@keyframes story-cinematic-pan {
+  0% {
+    opacity: 0.92;
+    transform: scale(1.04) translate3d(-1%, -1%, 0);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.08) translate3d(1%, 0, 0);
+  }
+  100% {
+    opacity: 0.94;
+    transform: scale(1.05) translate3d(0, 1%, 0);
+  }
+}
+
 .animate-fade-up {
   animation: var(--animate-fade-up);
 }
@@ -56,6 +71,11 @@ body {
 .animate-float {
   animation: var(--animate-float);
   will-change: transform;
+}
+
+.story-cinematic-image {
+  animation: story-cinematic-pan 18s ease-in-out infinite alternate;
+  will-change: transform, opacity;
 }
 
 /* Respect users who prefer reduced motion: disable all motion */

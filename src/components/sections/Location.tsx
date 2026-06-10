@@ -1,7 +1,10 @@
 'use client';
 
 import React from 'react';
-import { MapPin, Clock, Phone } from 'lucide-react';
+import { ExternalLink, MapPin, Clock, Phone } from 'lucide-react';
+
+const googleMapsUrl = 'https://www.google.com/maps/search/?api=1&query=Murgyani%20Arishario%20Food%20and%20Beverages%20Aryan%20Palace%206A%2F49%20near%20Jora%20Mandir%20Road%20Chit%20Kalikapur%20Mukundapur%20Kolkata%20700099';
+const mapEmbedUrl = 'https://maps.google.com/maps?q=Murgyani%20The%20Khandaani%20Biryani%202184%206A%2F49%20Ground%20Floor%20Mukundapur%20Kolkata%20700099&z=16&output=embed';
 
 export const Location: React.FC = () => {
   return (
@@ -24,13 +27,25 @@ export const Location: React.FC = () => {
                 <div>
                   <h4 className="text-white font-bold font-sans text-xl mb-2">Location</h4>
                   <p className="text-neutral-400 font-sans">
-                    Aryan Palace, 6A/49, near Jora Mandir road,<br />
+                    Aryan Palace, 2184, 6A/49, Ground Floor,<br />
+                    near Jora Mandir road,<br />
                     Chit Kalikapur, Mukundapur,<br />
                     Kolkata, West Bengal 700099, India
                   </p>
-                  <span className="inline-block mt-2 text-xs font-bold bg-brand-green text-white px-3 py-1 rounded-full">
-                    Delivery Available Nearby
-                  </span>
+                  <div className="mt-3 flex flex-wrap items-center gap-3">
+                    <span className="inline-block text-xs font-bold bg-brand-green text-white px-3 py-1 rounded-full">
+                      Delivery Available Nearby
+                    </span>
+                    <a
+                      href={googleMapsUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-1.5 text-xs font-bold text-brand-gold transition-colors hover:text-yellow-300"
+                    >
+                      Open in Google Maps
+                      <ExternalLink className="h-3.5 w-3.5" />
+                    </a>
+                  </div>
                 </div>
               </div>
 
@@ -69,7 +84,7 @@ export const Location: React.FC = () => {
               For now, using a free public embed link.
             */}
             <iframe 
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3685.807353139366!2d88.3965!3d22.4938!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a0273a00282b01d%3A0x6a0283c749b5c!2sMukundapur%2C%20Kolkata!5e0!3m2!1sen!2sin!4v1700000000000!5m2!1sen!2sin" 
+              src={mapEmbedUrl}
               width="100%" 
               height="100%" 
               style={{ border: 0 }} 

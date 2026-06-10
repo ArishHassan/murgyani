@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useEffect } from 'react';
+import React from 'react';
 import { X } from 'lucide-react';
 import { createPortal } from 'react-dom';
 
@@ -10,13 +10,11 @@ interface OrderModalProps {
 }
 
 export const OrderModal: React.FC<OrderModalProps> = ({ isOpen, onClose }) => {
-  const [mounted, setMounted] = React.useState(false);
+  const modalRoot = typeof document === 'undefined'
+    ? null
+    : document.getElementById('modal-root');
 
-  useEffect(() => {
-    setMounted(true);
-  }, []);
-
-  if (!isOpen || !mounted) return null;
+  if (!isOpen || !modalRoot) return null;
 
   const modalContent = (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
@@ -66,5 +64,5 @@ export const OrderModal: React.FC<OrderModalProps> = ({ isOpen, onClose }) => {
     </div>
   );
 
-  return createPortal(modalContent, document.getElementById('modal-root')!);
+  return createPortal(modalContent, modalRoot);
 };

@@ -16,7 +16,7 @@ export default function Home() {
 
   return (
     <main className="relative flex min-h-screen flex-col bg-background">
-      <Navbar onOrderClick={openOrder} />
+      <Navbar />
 
       {/* Sticky Order Button */}
       <div className="fixed bottom-6 right-6 z-40">
@@ -40,7 +40,7 @@ export default function Home() {
       <Menu onOrderClick={openOrder} />
 
       {/* Contact / Location */}
-      <Location onOrderClick={openOrder} />
+      <Location />
 
       {/* Footer */}
       <footer className="border-t border-white/5 bg-neutral-950 py-8 text-center">
