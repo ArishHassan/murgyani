@@ -5,7 +5,7 @@ import { MapPin, Clock, Phone } from 'lucide-react';
 
 export const Location: React.FC = () => {
   return (
-    <section className="py-24 bg-neutral-950 relative z-10 px-6 lg:px-24 border-t border-brand-gold/10">
+    <section id="contact" className="py-24 bg-neutral-950 relative z-10 px-6 lg:px-24 border-t border-brand-gold/10">
       <div className="max-w-6xl mx-auto">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
           

@@ -31,6 +31,7 @@ export const Navbar = () => {
       <div className="hidden md:flex gap-8 items-center">
         <a href="#menu" className="text-sm font-sans font-medium text-neutral-300 hover:text-brand-gold transition-colors">Menu</a>
         <a href="#about" className="text-sm font-sans font-medium text-neutral-300 hover:text-brand-gold transition-colors">Story</a>
+        <a href="#contact" className="text-sm font-sans font-medium text-neutral-300 hover:text-brand-gold transition-colors">Contact</a>
       </div>
     </nav>
   );
